@@ -1,4 +1,5 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <stack>
 using namespace std;
 
 
@@ -49,7 +50,7 @@ int main()
     cin>>t;
     while(t--)
     {
-        int n;
+        int n=0;
         cin>>n;
         
         long long arr[n];
