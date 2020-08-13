@@ -1,60 +1,37 @@
-// C++ program to remove recurring digits from
-// a given number
 #include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
 using namespace std;
-
-
- // } Driver Code Ends
-
-
-// Function to find the leaders in an array of size n
-vector<int> leaders(int arr[], int n){
-    vector<int> ans;
-    int max = -9999;
-    for ( int i=n-1; i >= 0; i--){
-        if (arr[i]>=max){
-            max = arr[i];
-            ans.push_back(max);
-        }
-    }
-    reverse(ans.begin(),ans.end());
-    return ans;
-    // Your code here
-    
-    /******************
-     * You just need to complete this
-     * function and return the vector
-     * containing the leaders.
-     * ***************/
-     
-    
-}
-
-// { Driver Code Starts.
 
 int main()
 {
-   long long t;
-   cin >> t;
-   while (t--)
-   {
-       long long n;
-       cin >> n;
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n;
+        cin >> n;
+        vector<int> v(n);
+        for (int i = 0; i < n; i++)
+            cin >> v[i];
         
-        int a[n];
+        vector<int> ans;
+        int m = -1;
         
-        for(long long i =0;i<n;i++){
-            cin >> a[i];
+        for (int i = n - 1; i >= 0; i--)
+        {
+            if (v[i] >= m)
+            {
+                m = v[i];
+                ans.push_back(m);
+            }
         }
-        
-        vector<int> v = leaders(a, n);
-        
-        for(auto it = v.begin();it!=v.end();it++){
-            cout << *it << " ";
-        }
-        
+        reverse(ans.begin(), ans.end());
+        for (int i : ans)
+            cout << i << " ";
         cout << endl;
+    }
 
-   }
+    //code
+    return 0;
 }
-  // } Driver Code Ends
