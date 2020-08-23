@@ -118,6 +118,9 @@ struct Node
 
 // This function should return tree if passed  tree
 // is balanced, else false.
+
+
+// O(n^2)
 int height(Node *root)
 {
     if (!root)
@@ -134,4 +137,29 @@ bool isBalanced(Node *root)
     if (abs(l - r) > 1)
         return false;
     return isBalanced(root->left) && isBalanced(root->right);
+}
+
+// O(n)
+bool check;
+int height(Node *root)
+{
+    if (!root)
+        return 0;
+    if (!root->left && !root->right)
+        return 1;
+    int l = height(root->left);
+    int r = height(root->right);
+    if (abs(l - r) > 1)
+    {
+        check = false;
+        return 0;
+    }
+    return 1 + max(l, r);
+}
+bool isBalanced(Node *root)
+{
+    if (!root)
+        return true;
+    check = true;
+    return height(root) && check;
 }
