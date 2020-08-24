@@ -142,6 +142,9 @@ struct Node {
 
 // The function returns the root of the BST (currently rooted at 'root')
 // after inserting a new Node with value 'Key' into it.
+
+// iterative
+
 Node *insert(Node *root, int key)
 {
     Node *parent, *p;
@@ -168,4 +171,21 @@ Node *insert(Node *root, int key)
     else
         parent->left = p;
     return p;
+}
+
+// recursive
+
+Node *insert(Node *root, int key)
+{
+    if (!root)
+    {
+        Node *p = new Node(key);
+        return p;
+    }
+    if (key == root->data)
+        return root;
+    else if (key < root->data)
+        root->left = insert(root->left, key);
+    else
+        root->right = insert(root->right, key);
 }
