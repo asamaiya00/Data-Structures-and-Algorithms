@@ -90,29 +90,29 @@ Node* buildTree(string str) {
 
 class Solution {
   public:
-  vector <int> largestValues(Node *root) {
   /* Pre Order Traversal*/
-    void preOrder(Node *root, vector <int> &ans, int currLevel) {
-      if (!root)
-        return;
-      if (ans.size() == currLevel)
-        ans.push_back(root -> data);
-      else
-        ans[currLevel] = max(root -> data, ans[currLevel]);
-      preOrder(root -> left, ans, currLevel + 1);
-      preOrder(root -> right, ans, currLevel + 1);
-    }
+  void preOrder(Node *root, vector<int> &ans, int currLevel) {
+    if (!root)
+      return;
+    if (ans.size() == currLevel)
+      ans.push_back(root -> data);
+    else
+      ans[currLevel] = max(root -> data, ans[currLevel]);
+    preOrder(root -> left, ans, currLevel + 1);
+    preOrder(root -> right, ans, currLevel + 1);
+  }
 
-  vector <int> largestValues(Node *root) {
-    vector <int> ans;
+  vector<int> largestValues(Node *root) {
+    vector<int> ans;
     preOrder(root, ans, 0);
     return ans;
   }
 
   /* Level Order */    
+  vector<int> largestValues(Node *root) {
     queue <Node*> q;
     q.push(root);
-    vector <int> ans;
+    vector<int> ans;
     while (!q.empty()) {
       int n = q.size(), maxx = INT_MIN;
       while (n--) {
@@ -146,7 +146,7 @@ int main() {
 
     struct Node *root = buildTree(inp);
     Solution ob;
-    vector <int> ans = ob.largestValues(root);
+    vector<int> ans = ob.largestValues(root);
 
     for (int i = 0; i < ans.size(); i++)
       cout << ans[i] << " ";
