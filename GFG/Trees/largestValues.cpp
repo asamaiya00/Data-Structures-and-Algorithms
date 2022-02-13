@@ -91,7 +91,25 @@ Node* buildTree(string str) {
 class Solution {
   public:
   vector <int> largestValues(Node *root) {
-    //code here
+  /* Pre Order Traversal*/
+    void preOrder(Node *root, vector <int> &ans, int currLevel) {
+      if (!root)
+        return;
+      if (ans.size() == currLevel)
+        ans.push_back(root -> data);
+      else
+        ans[currLevel] = max(root -> data, ans[currLevel]);
+      preOrder(root -> left, ans, currLevel + 1);
+      preOrder(root -> right, ans, currLevel + 1);
+    }
+
+  vector <int> largestValues(Node *root) {
+    vector <int> ans;
+    preOrder(root, ans, 0);
+    return ans;
+  }
+
+  /* Level Order */    
     queue <Node*> q;
     q.push(root);
     vector <int> ans;
