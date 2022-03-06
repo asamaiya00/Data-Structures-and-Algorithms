@@ -9,16 +9,15 @@ class Solution {
 	public:
 		vector<int> canMakeTriangle(vector<int> A, int N) {
 			// code here
-			vector<int> ans;
 			int i = 2;
 			while (i < N) {
 				if (A[i - 2] + A[i - 1] > A[i] && A[i - 1] + A[i] > A[i - 2] && A[i] + A[i - 2] > A[i - 1])
-					ans.push_back(1);
+					cout << 1 << " ";
 				else
-					ans.push_back(0);
+					cout << 0 << " ";
 				i++;
 			}
-			return ans;
+			return {};
 		}
 };
 
