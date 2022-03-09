@@ -69,18 +69,34 @@ int StackQueue :: pop()
         s2.pop();
         return x;
     }
-    else{
-        if (s1.empty()) return -1;
+    else {
+        if (s1.empty())
+            return -1;
         else {
             while (!s1.empty()) {
                 s2.push(s1.top());
                 s1.pop();
             }
         }
-        int x = s2.top();
+    int x = s2.top();
     s2.pop();
     return x;
     }
-   
-    
+}
+// another method 
+int StackQueue :: pop()
+{
+    while(!s1.empty()) {
+        s2.push(s1.top());
+        s1.pop();        
+    }
+    if (s2.empty())
+        return -1;
+    int top = s2.top();
+    s2.pop();
+    while(!s2.empty()) {
+        s1.push(s2.top());
+        s2.pop();        
+    }
+    return top;
 }
